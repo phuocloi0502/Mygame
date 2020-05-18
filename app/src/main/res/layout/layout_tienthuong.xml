@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:padding="10dp"
-        android:text=""
+        android:text="tien"
         android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="#9C27B0"/>

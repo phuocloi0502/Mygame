@@ -20,11 +20,16 @@ import java.util.List;
 public class TienThuongAdapter extends ArrayAdapter<String> {
     Context mct;
     ArrayList<String> arr;
+    int viTriCauHoi=1;
 
     public TienThuongAdapter(Context context, int resource, List<String> objects) {
         super(context, resource, objects);
         this.mct = context;
         this.arr = new ArrayList<>(objects);
+    }
+    public void setViTriCauHoi(int viTriCauHoi){
+        this.viTriCauHoi=viTriCauHoi;
+        notifyDataSetChanged();
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -49,6 +54,13 @@ public class TienThuongAdapter extends ArrayAdapter<String> {
 
             String textHienThi = pos+khoangTrang+"$"+arr.get(position);
             txvTienThuong.setText(textHienThi);
+            if(pos==viTriCauHoi){
+                txvTienThuong.setBackgroundColor(Color.parseColor("#FF9800"));
+                txvTienThuong.setTextColor(Color.parseColor("#9C27B0"));
+            }else
+            {
+                txvTienThuong.setBackgroundColor(Color.parseColor("#00FF9800"));
+            }
 
 
         }

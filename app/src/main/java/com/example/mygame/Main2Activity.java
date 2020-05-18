@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mygame.adapter.TienThuongAdapter;
 import com.example.mygame.object.CauHoi;
@@ -19,6 +21,7 @@ ListView lvTienThuong;
 TienThuongAdapter tienThuongAdapter;
 ArrayList<String> arrayTienThuong;
 CauHoi cauHoi;
+int vitricauhoi=1;
 TextView txvCauHoi,txvCauTL1,txvCauTL2,txvCauTL3,txvCauTL4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +68,20 @@ TextView txvCauHoi,txvCauTL1,txvCauTL2,txvCauTL3,txvCauTL4;
         setCauHoi();
         hienCauHoi();
     }
-    public void setCick(){}
+    public void setCick(){
+        View.OnClickListener listener=new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                kiemTra(   ((TextView)v).getText().toString());
+            }
+
+        };
+        txvCauTL1.setOnClickListener(listener);
+        txvCauTL2.setOnClickListener(listener);
+        txvCauTL3.setOnClickListener(listener);
+        txvCauTL4.setOnClickListener(listener);
+
+    }
     public void setCauHoi(){
         cauHoi=new CauHoi();
         cauHoi.setNoiDung("1+1=...");
@@ -99,5 +115,20 @@ TextView txvCauHoi,txvCauTL1,txvCauTL2,txvCauTL3,txvCauTL4;
         txvCauTL2.setText(traloi.get(1));
         txvCauTL3.setText(traloi.get(2));
         txvCauTL4.setText(traloi.get(3));
+        tienThuongAdapter.setViTriCauHoi(vitricauhoi);
     }
+    public  void kiemTra(String traloi){
+        if(traloi.equals(cauHoi.getDapAnDung())){
+            vitricauhoi++;
+            if(vitricauhoi>=15){
+                vitricauhoi=15;
+            }
+            hienCauHoi();
+        } else
+        {
+            Toast.makeText(this, "Thua roi", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 }
