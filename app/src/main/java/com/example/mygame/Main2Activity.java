@@ -80,7 +80,6 @@ TextView txvCauHoi,txvCauTL1,txvCauTL2,txvCauTL3,txvCauTL4;
         txvCauHoi.setText(cauHoi.getNoiDung());
         ArrayList<String> arrCauTraLoi=new ArrayList<>(cauHoi.getArrDapAnSai());
         arrCauTraLoi.add(cauHoi.getDapAnDung());
-
         ArrayList<Integer> listint=new ArrayList<>();
         for (int i=0;i<4;i++)
         {
